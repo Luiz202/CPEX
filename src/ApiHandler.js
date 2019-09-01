@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {  TouchableOpacity, TextInput, View, StyleSheet, Text } from 'react-native';
+import {  TouchableOpacity, TextInput, View, StyleSheet, Text, Alert } from 'react-native';
 
 export default class Handler extends Component {
   constructor(props) {
@@ -12,21 +12,13 @@ export default class Handler extends Component {
   
   onSend() {
     const { message } = this.state;
-    fetch('http://localhost:3333', { 
-        method: 'POST',
-         headers: {
-            
-        },
-          body: JSON.stringify({
-            message: {message},
-          }),
-        }).then((response) => response.json())
-            .then((responseJson) => {
-              return responseJson.movies;
-            })
-            .catch((error) => {
-              console.error(error);
-            });
+    fetch("https://campus-party-hacka.herokuapp.com/send_message", {
+      body: "{\"text\":\""+message+"\" ,\"name\":\"Hik\"}",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    });
           }
 
   render() {
@@ -67,8 +59,6 @@ const styles = StyleSheet.create({
 
   },
 });
-
-
 /* 
 <input 
     placeholder:"digite seu usuário no github"

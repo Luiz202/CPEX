@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Handler from './src/ApiHandler'
+import Header from './src/Header'
 
 
 export default  App = () => {
   return (
     <View style={styles.container}>
+      <Header />
       <Handler />
     </View>
   );
